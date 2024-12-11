@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" 
+th:fragment="parent(content,title)"
+xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- flowbite content -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" /> 
+    <title th:replace="${title}"></title>
+</head>
+<body>
+    <!-- common header -->
+
+    <!-- Dynamic content -->
+    <section data-th-replace="${content}"></section>
+
+    <!-- common footer -->
+    <!-- flowbite content -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+</body>
+</html>
