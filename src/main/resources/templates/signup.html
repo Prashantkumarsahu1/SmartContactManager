@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{fragment::parent(~{::#content},~{::title},~{})}">
+
+<head></head>
+<title>Signup page</title>
+
+<body>
+    <div id="content">    
+        <div class="grid grid-cols-12">   <!--dividing screen into 12 column -->
+            <div class="col-span-4" md:col-span-2 lg:col-span-3 xl:col-span-4></div> <!--left side 4 column -->
+            <div class="col-span-4" md:col-span-2 lg:col-span-3 xl:col-span-4> <!--card into 4 column -->
+                <!-- card -->
+                <a href="#"
+                    class="block mt-4 p-6  bg-white border-t-[10px] border-blue-700 rounded-xl shadow hover:bg-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    
+                    <div data-th-replace="~{message::messagebox}"></div>
+                    <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900   dark:text-white">Signup </h5>
+                    
+                    <p class="text-center font-normal text-gray-700 dark:text-gray-400">Start managing contacts on cloud</p>
+                    
+                    <!-- form design -->
+                    <form th:action="@{'/do-register'}" method="post" th:object="${userForm}" class="space-y-1">
+                        
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Name
+                            </label>
+                            <input type="text" id="name" th:field ="*{name}" class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Your name" required>
+                        </div>
+                        <!-- Validation of name -->
+                        <p data-th-if="${#fields.hasErrors('name')}"
+                        data-th-errors="*{name}"
+                        class="text-red-600 px-1 py-2"></p>
+        
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Email
+                            </label>
+                            <input type="email" id="email" th:field ="*{email}" class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="name@gmail.com" required>
+                        </div>
+                        <!-- Validation of email -->
+                        <p data-th-if="${#fields.hasErrors('email')}"
+                        data-th-errors="*{email}"
+                        class="text-red-600 px-1 py-2"> </p>
+        
+        
+                        <!-- Password -->
+                        <div>
+                            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                New Password
+                            </label>
+                            <input type="password" id="password" th:field ="*{password}" class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" required>
+                        </div>
+                        <!-- Validation of password -->
+                        <p data-th-if="${#fields.hasErrors('password')}"
+                        data-th-errors="*{password}"
+                        class="text-red-600 px-1 py-2"> </p>
+        
+                        <!-- Contact Number -->
+                        <div>
+                            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Contact Number
+                            </label>
+                            <input type="text" id="phone" th:field ="*{phoneNumber}" class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="123-456-7890" required>
+                        </div>
+                        <!-- Contact of phone number -->
+                        <p data-th-if="${#fields.hasErrors('phoneNumber')}"
+                        data-th-errors="*{phoneNumber}"
+                        class="text-red-600 px-1 py-2"> </p>
+        
+                        <!-- About -->
+                        <div>
+                            <label for="about" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                Write Something About Yourself
+                            </label>
+                            <textarea id="about" rows="4" th:field="*{about}" class="block w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 border border-gray-300 rounded-lg shadow-sm dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-blue-500 focus:border-blue-500" placeholder="Write here..." required></textarea>
+                        </div>
+                        <!-- Validation of password -->
+                        <p data-th-if="${#fields.hasErrors('about')}"
+                        data-th-errors="*{about}"
+                        class="text-red-600 px-1 py-2"> </p>
+        
+                        <!-- Buttons -->
+                        <div class="flex justify-between">
+                            <!-- Reset Button -->
+                            <button type="reset" class="px-6 py-2 text-sm font-medium text-gray-900 bg-gray-200 border border-gray-300 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:border-gray-600 dark:focus:ring-gray-500">
+                                Reset
+                            </button>
+        
+                            <!-- Signup Button -->
+                            <button type="submit" class="px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                Signup
+                            </button>
+                        </div>
+                    </form>
+                </a>
+                
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>
